@@ -109,7 +109,9 @@
 
 <style>
   html { scroll-behavior: smooth; }
+  html, body { overflow-x: hidden; max-width: 100%; }
   body { background:#fbfaf6; }
+  img { max-width: 100%; height: auto; }
 
   /* ---- Celestial background ---- */
   .heaven {
@@ -171,12 +173,12 @@
 
 <!-- ===================== HEADER ===================== -->
 <header class="sticky top-0 z-50 backdrop-blur-md bg-cream/85 border-b border-sky2/70">
-  <div class="max-w-6xl mx-auto px-5 h-[68px] flex items-center justify-between gap-4">
-    <a href="#" data-nav="home" class="flex items-center gap-3 shrink-0">
-      <img src="images/logo-en.jpg" alt="Gabriel's Angels Foundation logo" class="h-11 w-11 rounded-full object-cover ring-1 ring-gold/40 shadow-sm" />
-      <span class="leading-tight">
-        <span class="block font-serif text-[15px] sm:text-[17px] text-ink font-semibold" data-en="Gabriel's Angels Foundation" data-es="Fundación Los Ángeles de Gabriel">Gabriel's Angels Foundation</span>
-        <span class="block text-[11px] tracking-[.18em] uppercase text-azuredeep/80" data-en="Together We Can · Houston, TX" data-es="Juntos Podemos · Houston, TX">Together We Can · Houston, TX</span>
+  <div class="max-w-6xl mx-auto px-4 sm:px-5 h-[68px] flex items-center justify-between gap-2 sm:gap-4">
+    <a href="#" data-nav="home" class="flex items-center gap-2.5 sm:gap-3 min-w-0">
+      <img src="images/logo-en.jpg" alt="Gabriel's Angels Foundation logo" class="h-10 w-10 sm:h-11 sm:w-11 rounded-full object-cover ring-1 ring-gold/40 shadow-sm shrink-0" />
+      <span class="leading-tight min-w-0">
+        <span class="block font-serif text-[14px] sm:text-[17px] text-ink font-semibold truncate" data-en="Gabriel's Angels Foundation" data-es="Fundación Los Ángeles de Gabriel">Gabriel's Angels Foundation</span>
+        <span class="block text-[11px] tracking-[.18em] uppercase text-azuredeep/80 truncate" data-en="Together We Can · Houston, TX" data-es="Juntos Podemos · Houston, TX">Together We Can · Houston, TX</span>
       </span>
     </a>
 
@@ -188,14 +190,14 @@
       <a data-nav="request" class="nav-link cursor-pointer" data-en="Get Help"   data-es="Solicitar Apoyo">Get Help</a>
     </nav>
 
-    <div class="flex items-center gap-2">
+    <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
       <button id="langBtn" class="text-[12px] font-semibold tracking-wide border border-azure/40 text-azuredeep rounded-full px-3 py-1.5 hover:bg-sky1 transition">
         <span id="langLabel">Español</span>
       </button>
       <a data-nav="donate" class="hidden sm:inline-flex items-center gap-1.5 bg-gold hover:bg-golddeep text-white text-[13px] font-semibold rounded-full px-4 py-2 shadow-sm transition cursor-pointer">
         <span data-en="Donate" data-es="Donar">Donate</span>
       </a>
-      <button id="menuBtn" class="lg:hidden p-2 -mr-2 text-ink" aria-label="Menu">
+      <button id="menuBtn" class="lg:hidden p-2 -mr-1 text-ink" aria-label="Menu">
         <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/></svg>
       </button>
     </div>
