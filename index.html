@@ -19,10 +19,10 @@
 <meta property="og:site_name" content="Gabriel's Angels Foundation · Los Ángeles de Gabriel" />
 <meta property="og:title" content="Gabriel's Angels Foundation · Los Ángeles de Gabriel — Houston, TX" />
 <meta property="og:description" content="Dignified, immediate support in the hardest moments — funeral, medical and daily-life help for Houston families. No bureaucracy. Together We Can / Juntos Podemos." />
-<meta property="og:image" content="https://angelesdegabriel.org/images/og-cover.jpg" />
+<meta property="og:image" content="https://angelesdegabriel.org/images/og-cover-es.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Marlogee with her son Gabriel and the Gabriel's Angels Foundation logo — Together We Can" />
+<meta property="og:image:alt" content="Marlogee junto a su hijo Gabriel y el logo de la Fundación Los Ángeles de Gabriel — Juntos Podemos" />
 <meta property="og:url" content="https://angelesdegabriel.org/" />
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="en_US" />
@@ -32,7 +32,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Gabriel's Angels Foundation · Los Ángeles de Gabriel — Houston, TX" />
 <meta name="twitter:description" content="Dignified, immediate help with funeral, medical and daily expenses for Houston families. Together We Can · Juntos Podemos." />
-<meta name="twitter:image" content="https://angelesdegabriel.org/images/og-cover.jpg" />
+<meta name="twitter:image" content="https://angelesdegabriel.org/images/og-cover-es.jpg" />
 
 <link rel="icon" type="image/jpeg" href="images/logo-en.jpg" />
 <link rel="apple-touch-icon" href="images/logo-en.jpg" />
@@ -46,7 +46,7 @@
   "alternateName": "Fundación Los Ángeles de Gabriel",
   "url": "https://angelesdegabriel.org/",
   "logo": "https://angelesdegabriel.org/images/logo-en.jpg",
-  "image": "https://angelesdegabriel.org/images/og-cover.jpg",
+  "image": "https://angelesdegabriel.org/images/og-cover-es.jpg",
   "description": "Houston non-profit offering dignified, immediate help with funeral, medical and daily expenses for low-income families — no bureaucracy, no hard questions.",
   "slogan": "Together We Can",
   "foundingDate": "2014-12",
@@ -269,7 +269,7 @@
         <div class="reveal relative">
           <div class="float">
             <div class="rounded-[28px] overflow-hidden shadow-soft ring-1 ring-white/70 bg-white p-2">
-              <img src="images/hero-family.jpg" alt="Marlogee with her son Gabriel and the Gabriel's Angels Foundation logo — Together We Can" class="w-full rounded-[22px] object-cover" width="1600" height="900" />
+              <img id="heroImg" src="images/hero-family-es.jpg" data-img-en="images/hero-family.jpg" data-img-es="images/hero-family-es.jpg" alt="Marlogee with her son Gabriel and the foundation logo — Together We Can / Juntos Podemos" class="w-full rounded-[22px] object-cover" width="1600" height="900" />
             </div>
           </div>
           <div class="absolute -bottom-5 -left-3 sm:-left-6 bg-white rounded-2xl shadow-card px-5 py-4 ring-1 ring-sky2 flex items-center gap-3">
@@ -814,6 +814,8 @@
         el.innerHTML = val;
       }
     });
+    var hero = document.getElementById('heroImg');
+    if(hero){ var hs = hero.getAttribute('data-img-'+l); if(hs) hero.src = hs; }
     document.getElementById('langLabel').textContent = (l==='en') ? 'Español' : 'English';
     localStorage.setItem('lag_lang', l);
     lang = l;
