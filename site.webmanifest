@@ -1,0 +1,13 @@
+{
+  "name": "Gabriel's Angels Foundation · Los Ángeles de Gabriel",
+  "short_name": "Gabriel's Angels",
+  "description": "Dignified, immediate help for Houston families. Together We Can / Juntos Podemos.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fbfaf6",
+  "theme_color": "#eaf2fb",
+  "icons": [
+    { "src": "/images/favicon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/images/favicon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
