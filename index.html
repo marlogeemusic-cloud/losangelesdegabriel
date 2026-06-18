@@ -11,6 +11,7 @@
 </script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<base href="/" />
 <title>Gabriel's Angels Foundation · Los Ángeles de Gabriel — Houston, TX | Funeral, Medical &amp; Family Help</title>
 <meta name="description" content="Gabriel's Angels Foundation (Fundación Los Ángeles de Gabriel) is a Houston non-profit offering dignified, immediate help with funeral, medical and daily expenses for low-income families — no bureaucracy, no hard questions. Donate via Cash App or Zelle. Together We Can · Juntos Podemos." />
 <meta name="keywords" content="Gabriel's Angels Foundation, Fundación Los Ángeles de Gabriel, Houston non-profit, funeral assistance Houston, ayuda funeraria Houston, medical bill help, family support, donate Cash App Zelle, Hispanic charity Houston, plate sale fundraiser, Together We Can" />
@@ -79,6 +80,12 @@
     "email": "angelstogetherwecan@gmail.com",
     "contactType": "support",
     "availableLanguage": ["English", "Spanish"]
+  },
+  "potentialAction": {
+    "@type": "DonateAction",
+    "name": "Donate to Gabriel's Angels Foundation",
+    "target": "https://www.angelesdegabriel.org/donate",
+    "recipient": { "@type": "NGO", "name": "Gabriel's Angels Foundation" }
   }
 }
 </script>
@@ -205,6 +212,26 @@
   #mobileMenu .menu-foot { opacity:0; transition: opacity .5s ease .42s; }
   #mobileMenu.open .menu-foot { opacity:1; }
   body.menu-open { overflow:hidden; }
+
+  /* ---- Floating donate button (always nudging to give) ---- */
+  .donate-fab {
+    position:fixed; right:18px; bottom:20px; z-index:45;
+    display:inline-flex; align-items:center; gap:.5rem;
+    background:#c9a24b; color:#fff; font-weight:700; font-size:15px; line-height:1;
+    padding:.85rem 1.2rem; border-radius:9999px; border:none; cursor:pointer;
+    box-shadow:0 14px 34px -8px rgba(169,134,58,.6);
+    transition: transform .25s cubic-bezier(.4,0,.2,1), background .25s ease, opacity .3s ease;
+    animation: fabpulse 2.6s ease-in-out infinite;
+  }
+  .donate-fab:hover { background:#a9863a; transform:translateY(-3px); }
+  .donate-fab svg { flex:none; }
+  @keyframes fabpulse {
+    0%,100% { box-shadow:0 14px 34px -8px rgba(169,134,58,.55), 0 0 0 0 rgba(201,162,75,.5); }
+    50%     { box-shadow:0 14px 34px -8px rgba(169,134,58,.65), 0 0 0 13px rgba(201,162,75,0); }
+  }
+  body[data-page="donate"] .donate-fab,
+  body.menu-open .donate-fab { opacity:0; pointer-events:none; transform:scale(.9); }
+  @media (prefers-reduced-motion: reduce){ .donate-fab { animation:none; } }
 
   ::selection { background:#e7d3a1; color:#2b3440; }
   .copy-toast {
@@ -837,6 +864,12 @@
   </div>
 </footer>
 
+<!-- Floating donate button -->
+<button id="donateFab" class="donate-fab" aria-label="Donate">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.6-4.7-10.1-9.3C.4 8.9 1.5 5.6 4.5 5c2-.4 3.9.6 4.9 2.1.6.8 2.6.8 2.6.8s2 0 2.6-.8c1-1.5 2.9-2.5 4.9-2.1 3 .6 4.1 3.9 2.6 6.7C19.6 16.3 12 21 12 21z"/></svg>
+  <span data-en="Donate" data-es="Donar">Donate</span>
+</button>
+
 <div id="toast" class="copy-toast"></div>
 
 <!-- ===================== SCRIPT ===================== -->
@@ -845,6 +878,60 @@
   var pages = document.querySelectorAll('.page');
   var navItems = document.querySelectorAll('[data-nav]');
   var topNav = document.querySelectorAll('nav .nav-link');
+  var lang = localStorage.getItem('lag_lang') || 'en';
+  var currentPage = 'home';
+
+  // ---------- Routes: real URLs + per-page SEO meta (bilingual) ----------
+  var ORIGIN = 'https://www.angelesdegabriel.org';
+  var ROUTES = {
+    home:    { path:'/',
+      titleEn:"Gabriel's Angels Foundation · Los Ángeles de Gabriel — Houston, TX | Funeral, Medical & Family Help",
+      titleEs:"Fundación Los Ángeles de Gabriel — Houston, TX | Ayuda Funeraria, Médica y Familiar",
+      descEn:"Houston non-profit offering dignified, immediate help with funeral, medical and daily expenses for low-income families — no bureaucracy. Donate via Cash App or Zelle. Together We Can.",
+      descEs:"ONG en Houston que ofrece ayuda digna e inmediata con gastos funerarios, médicos y diarios para familias de bajos recursos — sin burocracia. Dona por Cash App o Zelle. Juntos Podemos." },
+    story:   { path:'/story',
+      titleEn:"Marlogee & Gabriel — Our Story | Gabriel's Angels Foundation",
+      titleEs:"Marlogee y Gabriel — Nuestra Historia | Fundación Los Ángeles de Gabriel",
+      descEn:"In memory of Gabriel Ángel Maciel. How a mother's loss became a Houston foundation walking beside families in their hardest moments.",
+      descEs:"En memoria de Gabriel Ángel Maciel. Cómo la pérdida de una madre se convirtió en una fundación de Houston que acompaña a las familias en sus momentos más difíciles." },
+    help:    { path:'/help',
+      titleEn:"How We Help — Funeral, Medical & Food Assistance | Gabriel's Angels Foundation Houston",
+      titleEs:"Cómo Ayudamos — Apoyo Funerario, Médico y de Comida | Fundación Los Ángeles de Gabriel",
+      descEn:"We cover funeral costs, medical needs and daily essentials for Houston families in crisis — with dignity and no hard questions. See how we help and how to give.",
+      descEs:"Cubrimos gastos funerarios, necesidades médicas y lo esencial del día a día para familias de Houston en crisis — con dignidad y sin preguntas difíciles." },
+    donate:  { path:'/donate',
+      titleEn:"Donate — Cash App & Zelle | Gabriel's Angels Foundation, Houston",
+      titleEs:"Donar — Cash App y Zelle | Fundación Los Ángeles de Gabriel, Houston",
+      descEn:"Give in seconds with Cash App ($LosAngelesDeGabriel) or Zelle. Every dollar helps Houston families with funeral, medical and daily expenses. Donate today.",
+      descEs:"Dona en segundos con Cash App ($LosAngelesDeGabriel) o Zelle. Cada dólar ayuda a familias de Houston con gastos funerarios, médicos y diarios. Dona hoy." },
+    request: { path:'/request',
+      titleEn:"Get Help — Request Support | Gabriel's Angels Foundation Houston",
+      titleEs:"Solicitar Apoyo — Pide Ayuda | Fundación Los Ángeles de Gabriel, Houston",
+      descEn:"Need help with funeral, medical or daily expenses in Houston? Request support — no bureaucracy, no painful questions. We're here for your family.",
+      descEs:"¿Necesitas ayuda con gastos funerarios, médicos o diarios en Houston? Solicita apoyo — sin burocracia, sin preguntas dolorosas. Estamos para tu familia." }
+  };
+  var PATH_TO_PAGE = { '':'home', '/':'home' };
+  Object.keys(ROUTES).forEach(function(k){ PATH_TO_PAGE[ROUTES[k].path] = k; });
+
+  function setMeta(name, val, attr){
+    var el = document.head.querySelector('meta['+(attr||'name')+'="'+name+'"]');
+    if(el) el.setAttribute('content', val);
+  }
+  function applyMeta(target, l){
+    var r = ROUTES[target] || ROUTES.home;
+    var es = (l==='es');
+    var title = es ? r.titleEs : r.titleEn;
+    var desc  = es ? r.descEs  : r.descEn;
+    document.title = title;
+    setMeta('description', desc);
+    setMeta('og:title', title, 'property');
+    setMeta('og:description', desc, 'property');
+    setMeta('og:url', ORIGIN + r.path, 'property');
+    setMeta('twitter:title', title);
+    setMeta('twitter:description', desc);
+    var canon = document.querySelector('link[rel="canonical"]');
+    if(canon) canon.setAttribute('href', ORIGIN + r.path);
+  }
 
   function showReveals(scope){
     var els = (scope || document).querySelectorAll('.reveal');
@@ -857,17 +944,20 @@
   }, { threshold:0.12 });
   document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
 
-  function navigate(target){
+  function navigate(target, push){
+    if(!ROUTES[target]) target = 'home';
+    currentPage = target;
     pages.forEach(function(p){ p.classList.toggle('active', p.dataset.page===target); });
-    // active link state
     topNav.forEach(function(l){ l.classList.toggle('active', l.dataset.nav===target); });
+    document.body.setAttribute('data-page', target);
     window.scrollTo({ top:0, behavior:'smooth' });
-    // re-trigger reveals for the now-visible page
     var active = document.querySelector('.page.active');
-    if(active){ active.querySelectorAll('.reveal').forEach(function(el){ el.classList.remove('in'); io.observe(el); showReveals(active); }); }
-    // close mobile menu
+    if(active){ active.querySelectorAll('.reveal').forEach(function(el){ el.classList.remove('in'); io.observe(el); }); showReveals(active); }
     closeMenu();
-    if(history && history.replaceState){ history.replaceState(null,'', '#'+target); }
+    applyMeta(target, lang);
+    if(push !== false && history && history.pushState){
+      history.pushState({ page:target }, '', ROUTES[target].path);
+    }
   }
 
   navItems.forEach(function(item){
@@ -877,10 +967,20 @@
     });
   });
 
-  // deep link support
-  var initial = (location.hash || '#home').replace('#','');
-  if(document.querySelector('.page[data-page="'+initial+'"]')) navigate(initial);
-  else showReveals(document.querySelector('.page.active'));
+  window.addEventListener('popstate', function(){
+    var p = location.pathname.replace(/\/+$/,'') || '/';
+    navigate(PATH_TO_PAGE[p] || 'home', false);
+  });
+
+  // initial route: real path first, then legacy #hash, else home
+  (function(){
+    var p = location.pathname.replace(/\/+$/,'') || '/';
+    var target = PATH_TO_PAGE[p];
+    if(!target && location.hash){ target = location.hash.replace('#',''); }
+    if(!ROUTES[target]) target = 'home';
+    navigate(target, false);
+    if(history && history.replaceState){ history.replaceState({ page:target }, '', ROUTES[target].path); }
+  })();
 
   // ---------- Mobile menu (animated overlay) ----------
   var menuBtn = document.getElementById('menuBtn');
@@ -902,8 +1002,11 @@
   });
   document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeMenu(); });
 
+  // ---------- Floating donate button ----------
+  var donateFab = document.getElementById('donateFab');
+  if(donateFab){ donateFab.addEventListener('click', function(e){ e.preventDefault(); navigate('donate'); }); }
+
   // ---------- Language toggle ----------
-  var lang = localStorage.getItem('lag_lang') || 'en';
   function applyLang(l){
     document.documentElement.lang = l;
     document.querySelectorAll('[data-en]').forEach(function(el){
@@ -921,8 +1024,8 @@
     document.getElementById('langLabel').textContent = (l==='en') ? 'Español' : 'English';
     localStorage.setItem('lag_lang', l);
     lang = l;
+    applyMeta(currentPage, l);
   }
-  // Initial apply (handles spans with mixed content carefully: we only set those that are simple)
   applyLang(lang);
   document.getElementById('langBtn').addEventListener('click', function(){
     applyLang(lang==='en' ? 'es' : 'en');
