@@ -885,6 +885,9 @@
   // ---------- Mobile menu (animated overlay) ----------
   var menuBtn = document.getElementById('menuBtn');
   var mobileMenu = document.getElementById('mobileMenu');
+  // Move overlay out of <header> (header's backdrop-filter would otherwise make it
+  // the containing block for this position:fixed element, clipping it to 68px).
+  if(mobileMenu && mobileMenu.parentElement !== document.body){ document.body.appendChild(mobileMenu); }
   function openMenu(){
     mobileMenu.classList.add('open'); menuBtn.classList.add('menu-open');
     document.body.classList.add('menu-open'); menuBtn.setAttribute('aria-expanded','true');
