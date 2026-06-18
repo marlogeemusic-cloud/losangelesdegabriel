@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://angelesdegabriel.org/sitemap.xml
+Sitemap: https://www.angelesdegabriel.org/sitemap.xml
