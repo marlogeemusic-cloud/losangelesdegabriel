@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gabriel's Angels Foundation · Los Ángeles de Gabriel — Houston, TX</title>
+<meta name="description" content="Gabriel's Angels Foundation (Fundación Los Ángeles de Gabriel) — dignified, immediate help with funeral, medical and daily expenses for families in Houston. No bureaucracy. No hard questions. Together We Can." />
+<meta name="theme-color" content="#eaf2fb" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Gabriel's Angels Foundation · Los Ángeles de Gabriel" />
+<meta property="og:description" content="Dignified, immediate support in the hardest moments — Houston, TX. Together We Can / Juntos Podemos." />
+<meta property="og:image" content="images/banner.jpg" />
+<meta property="og:type" content="website" />
+
+<link rel="icon" href="images/logo-en.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@500;600;700&display=swap" rel="stylesheet" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          cream:  '#fbfaf6',
+          mist:   '#f3f7fc',
+          sky1:   '#eaf2fb',
+          sky2:   '#dbe9f8',
+          azure:  '#7ba7d7',
+          azuredeep: '#4d7fb5',
+          ink:    '#2b3440',
+          slatesoft: '#5b6675',
+          gold:   '#c9a24b',
+          golddeep: '#a9863a',
+          goldsoft: '#e7d3a1',
+        },
+        fontFamily: {
+          serif: ['"Playfair Display"', 'Georgia', 'serif'],
+          sans:  ['Inter', 'system-ui', 'sans-serif'],
+          script:['"Dancing Script"', 'cursive'],
+        },
+        boxShadow: {
+          soft: '0 10px 40px -12px rgba(77,127,181,0.25)',
+          card: '0 8px 30px -10px rgba(43,52,64,0.12)',
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { background:#fbfaf6; }
+
+  /* ---- Celestial background ---- */
+  .heaven {
+    background:
+      radial-gradient(1200px 520px at 50% -8%, #ffffff 0%, #eaf2fb 38%, #dbe9f8 70%, #cfe0f4 100%);
+  }
+  .cloud {
+    position:absolute; border-radius:9999px; background:rgba(255,255,255,.72);
+    filter: blur(14px); opacity:.7; pointer-events:none;
+    animation: drift linear infinite;
+  }
+  @keyframes drift {
+    from { transform: translateX(-12vw); }
+    to   { transform: translateX(112vw); }
+  }
+  @keyframes floaty {
+    0%,100% { transform: translateY(0); }
+    50%     { transform: translateY(-10px); }
+  }
+  .float { animation: floaty 6s ease-in-out infinite; }
+
+  /* ---- Reveal on scroll ---- */
+  .reveal { opacity:0; transform: translateY(26px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in { opacity:1; transform: none; }
+
+  /* ---- Page transitions ---- */
+  .page { display:none; }
+  .page.active { display:block; animation: pageIn .6s cubic-bezier(.2,.7,.2,1); }
+  @keyframes pageIn { from { opacity:0; transform: translateY(14px); } to { opacity:1; transform:none; } }
+
+  /* gold hairline */
+  .goldline { height:1px; background:linear-gradient(90deg, transparent, #c9a24b, transparent); }
+
+  .nav-link { position:relative; }
+  .nav-link::after {
+    content:''; position:absolute; left:0; bottom:-6px; height:2px; width:0;
+    background:#c9a24b; transition:width .3s ease;
+  }
+  .nav-link:hover::after, .nav-link.active::after { width:100%; }
+
+  .lift { transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s ease; }
+  .lift:hover { transform: translateY(-6px); box-shadow: 0 22px 50px -18px rgba(77,127,181,.45); }
+
+  /* wings divider */
+  .wings { opacity:.5; }
+
+  ::selection { background:#e7d3a1; color:#2b3440; }
+  .copy-toast {
+    position:fixed; left:50%; bottom:28px; transform:translateX(-50%) translateY(20px);
+    background:#2b3440; color:#fff; padding:.7rem 1.2rem; border-radius:9999px;
+    font-size:.85rem; opacity:0; pointer-events:none; transition:all .3s ease; z-index:90;
+    box-shadow:0 10px 30px -8px rgba(0,0,0,.4);
+  }
+  .copy-toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
+</style>
+</head>
+
+<body class="font-sans text-ink antialiased">
+
+<!-- ===================== HEADER ===================== -->
+<header class="sticky top-0 z-50 backdrop-blur-md bg-cream/85 border-b border-sky2/70">
+  <div class="max-w-6xl mx-auto px-5 h-[68px] flex items-center justify-between gap-4">
+    <a href="#" data-nav="home" class="flex items-center gap-3 shrink-0">
+      <img src="images/logo-en.jpg" alt="Gabriel's Angels Foundation logo" class="h-11 w-11 rounded-full object-cover ring-1 ring-gold/40 shadow-sm" />
+      <span class="leading-tight">
+        <span class="block font-serif text-[15px] sm:text-[17px] text-ink font-semibold" data-en="Gabriel's Angels Foundation" data-es="Fundación Los Ángeles de Gabriel">Gabriel's Angels Foundation</span>
+        <span class="block text-[11px] tracking-[.18em] uppercase text-azuredeep/80" data-en="Together We Can · Houston, TX" data-es="Juntos Podemos · Houston, TX">Together We Can · Houston, TX</span>
+      </span>
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-7 text-[14px] font-medium text-slatesoft">
+      <a data-nav="home"  class="nav-link cursor-pointer"  data-en="Home"        data-es="Inicio">Home</a>
+      <a data-nav="story" class="nav-link cursor-pointer"  data-en="Marlogee &amp; Gabriel" data-es="Marlogee y Gabriel">Marlogee &amp; Gabriel</a>
+      <a data-nav="help"  class="nav-link cursor-pointer"  data-en="How We Help" data-es="Cómo Ayudamos">How We Help</a>
+      <a data-nav="donate" class="nav-link cursor-pointer" data-en="Donate"      data-es="Donar">Donate</a>
+      <a data-nav="request" class="nav-link cursor-pointer" data-en="Get Help"   data-es="Solicitar Apoyo">Get Help</a>
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <button id="langBtn" class="text-[12px] font-semibold tracking-wide border border-azure/40 text-azuredeep rounded-full px-3 py-1.5 hover:bg-sky1 transition">
+        <span id="langLabel">Español</span>
+      </button>
+      <a data-nav="donate" class="hidden sm:inline-flex items-center gap-1.5 bg-gold hover:bg-golddeep text-white text-[13px] font-semibold rounded-full px-4 py-2 shadow-sm transition cursor-pointer">
+        <span data-en="Donate" data-es="Donar">Donate</span>
+      </a>
+      <button id="menuBtn" class="lg:hidden p-2 -mr-2 text-ink" aria-label="Menu">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- mobile menu -->
+  <div id="mobileMenu" class="lg:hidden hidden border-t border-sky2 bg-cream/95 backdrop-blur">
+    <div class="px-5 py-3 flex flex-col text-[15px] font-medium text-slatesoft">
+      <a data-nav="home"   class="py-2.5 border-b border-sky2/60 cursor-pointer" data-en="Home" data-es="Inicio">Home</a>
+      <a data-nav="story"  class="py-2.5 border-b border-sky2/60 cursor-pointer" data-en="Marlogee &amp; Gabriel" data-es="Marlogee y Gabriel">Marlogee &amp; Gabriel</a>
+      <a data-nav="help"   class="py-2.5 border-b border-sky2/60 cursor-pointer" data-en="How We Help" data-es="Cómo Ayudamos">How We Help</a>
+      <a data-nav="donate" class="py-2.5 border-b border-sky2/60 cursor-pointer" data-en="Donate" data-es="Donar">Donate</a>
+      <a data-nav="request" class="py-2.5 cursor-pointer" data-en="Get Help" data-es="Solicitar Apoyo">Get Help</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ============================================================= -->
+<!-- PAGE: HOME                                                     -->
+<!-- ============================================================= -->
+<section class="page active" data-page="home">
+
+  <!-- HERO -->
+  <div class="heaven relative overflow-hidden">
+    <div class="cloud" style="top:14%; width:220px; height:60px; animation-duration:60s"></div>
+    <div class="cloud" style="top:30%; width:320px; height:80px; animation-duration:90s; animation-delay:-30s"></div>
+    <div class="cloud" style="top:8%;  width:160px; height:46px; animation-duration:75s; animation-delay:-50s"></div>
+
+    <div class="max-w-6xl mx-auto px-5 pt-16 pb-20 sm:pt-20 sm:pb-28 relative">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="reveal">
+          <span class="inline-flex items-center gap-2 text-[12px] font-semibold tracking-[.18em] uppercase text-golddeep">
+            <span class="w-6 goldline"></span>
+            <span data-en="Non-Profit · Since December 2014" data-es="Sin Fines de Lucro · Desde diciembre 2014">Non-Profit · Since December 2014</span>
+          </span>
+
+          <h1 class="mt-5 font-serif text-[2.6rem] sm:text-6xl leading-[1.05] text-ink">
+            <span data-en="Dignity and help" data-es="Dignidad y ayuda">Dignity and help</span><br/>
+            <span class="italic text-azuredeep" data-en="when it matters most" data-es="cuando más se necesita">when it matters most</span>
+          </h1>
+
+          <p class="mt-6 text-[17px] leading-relaxed text-slatesoft max-w-xl"
+             data-en="In Houston, we walk beside families in their hardest moments — covering funeral, medical and daily expenses. No bureaucracy. No painful questions. You should never have to repeat your grief to be helped."
+             data-es="En Houston caminamos junto a las familias en sus momentos más difíciles — cubriendo gastos de funeral, médicos y del día a día. Sin burocracia. Sin preguntas dolorosas. Nadie debería tener que repetir su dolor para recibir ayuda.">
+             In Houston, we walk beside families in their hardest moments — covering funeral, medical and daily expenses. No bureaucracy. No painful questions. You should never have to repeat your grief to be helped.
+          </p>
+
+          <div class="mt-9 flex flex-wrap gap-3">
+            <a data-nav="request" class="cursor-pointer inline-flex items-center gap-2 bg-azuredeep hover:bg-ink text-white font-semibold rounded-full px-7 py-3.5 shadow-soft transition">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 1.8c2 4 6 4 6 8a6 6 0 11-12 0c0-1.6.8-2.8 1.6-3.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span data-en="I need help" data-es="Necesito ayuda">I need help</span>
+            </a>
+            <a data-nav="donate" class="cursor-pointer inline-flex items-center gap-2 bg-white hover:bg-cream text-ink font-semibold rounded-full px-7 py-3.5 border border-gold/50 shadow-sm transition">
+              <span class="text-gold">♥</span>
+              <span data-en="I want to give" data-es="Quiero apoyar">I want to give</span>
+            </a>
+          </div>
+
+          <p class="mt-6 text-[13px] text-slatesoft/80 italic font-serif"
+             data-en="“In memory of my son, Gabriel Ángel Maciel.” — Marlogee, founder"
+             data-es="“En memoria de mi hijo, Gabriel Ángel Maciel.” — Marlogee, fundadora">
+            “In memory of my son, Gabriel Ángel Maciel.” — Marlogee, founder
+          </p>
+        </div>
+
+        <!-- hero image -->
+        <div class="reveal relative">
+          <div class="float">
+            <div class="rounded-[28px] overflow-hidden shadow-soft ring-1 ring-white/70 bg-white p-2">
+              <img src="images/banner.jpg" alt="Gabriel's Angels Foundation — in memory of Gabriel Ángel Maciel" class="w-full rounded-[22px] object-cover" />
+            </div>
+          </div>
+          <div class="absolute -bottom-5 -left-3 sm:-left-6 bg-white rounded-2xl shadow-card px-5 py-4 ring-1 ring-sky2 flex items-center gap-3">
+            <img src="images/logo-en.jpg" alt="" class="h-12 w-12 rounded-full object-cover ring-1 ring-gold/40" />
+            <div class="leading-tight">
+              <p class="font-script text-2xl text-azuredeep">Together We Can</p>
+              <p class="text-[12px] text-slatesoft" data-en="Juntos Podemos" data-es="Together We Can">Juntos Podemos</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRUST STRIP -->
+  <div class="bg-white border-y border-sky2/70">
+    <div class="max-w-6xl mx-auto px-5 py-7 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      <div class="reveal">
+        <p class="font-serif text-3xl text-azuredeep">2014</p>
+        <p class="text-[12.5px] text-slatesoft mt-1" data-en="Serving Houston families" data-es="Sirviendo a familias de Houston">Serving Houston families</p>
+      </div>
+      <div class="reveal">
+        <p class="font-serif text-3xl text-azuredeep" data-en="No" data-es="Cero">No</p>
+        <p class="text-[12.5px] text-slatesoft mt-1" data-en="Bureaucracy or hard questions" data-es="Burocracia ni preguntas difíciles">Bureaucracy or hard questions</p>
+      </div>
+      <div class="reveal">
+        <p class="font-serif text-3xl text-azuredeep">100%</p>
+        <p class="text-[12.5px] text-slatesoft mt-1" data-en="Family collects directly" data-es="La familia recauda directamente">Family collects directly</p>
+      </div>
+      <div class="reveal">
+        <p class="font-serif text-3xl text-azuredeep">♥</p>
+        <p class="text-[12.5px] text-slatesoft mt-1" data-en="Made with food, faith &amp; community" data-es="Hecho con comida, fe y comunidad">Made with food, faith &amp; community</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PILLARS -->
+  <div class="max-w-6xl mx-auto px-5 py-20">
+    <div class="text-center max-w-2xl mx-auto reveal">
+      <p class="text-[12px] font-semibold tracking-[.2em] uppercase text-golddeep" data-en="How we help" data-es="Cómo ayudamos">How we help</p>
+      <h2 class="mt-3 font-serif text-4xl text-ink" data-en="Three ways we stand with you" data-es="Tres formas en que te acompañamos">Three ways we stand with you</h2>
+    </div>
+
+    <div class="mt-14 grid md:grid-cols-3 gap-6">
+      <!-- card -->
+      <div class="reveal lift bg-white rounded-3xl p-8 shadow-card ring-1 ring-sky2/60">
+        <div class="h-14 w-14 rounded-2xl bg-sky1 flex items-center justify-center text-azuredeep">
+          <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 23s-9-5.4-9-12a5 5 0 019-3 5 5 0 019 3c0 6.6-9 12-9 12z" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="mt-5 font-serif text-2xl text-ink" data-en="Funeral support" data-es="Apoyo funerario">Funeral support</h3>
+        <p class="mt-3 text-[15px] leading-relaxed text-slatesoft"
+           data-en="Help with funeral and burial costs so families can say goodbye with dignity — born from the very pain that started this foundation."
+           data-es="Ayuda con gastos de funeral y sepelio para que las familias se despidan con dignidad — nacido del mismo dolor que originó esta fundación.">
+           Help with funeral and burial costs so families can say goodbye with dignity — born from the very pain that started this foundation.
+        </p>
+      </div>
+
+      <div class="reveal lift bg-white rounded-3xl p-8 shadow-card ring-1 ring-sky2/60">
+        <div class="h-14 w-14 rounded-2xl bg-sky1 flex items-center justify-center text-azuredeep">
+          <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 5v16M5 13h16" stroke-linecap="round"/><circle cx="13" cy="13" r="11"/></svg>
+        </div>
+        <h3 class="mt-5 font-serif text-2xl text-ink" data-en="Medical &amp; daily needs" data-es="Salud y necesidades diarias">Medical &amp; daily needs</h3>
+        <p class="mt-3 text-[15px] leading-relaxed text-slatesoft"
+           data-en="Assistance with medical bills, groceries and everyday expenses for low-income families going through a crisis."
+           data-es="Asistencia con gastos médicos, despensa y necesidades del día a día para familias de bajos recursos que atraviesan una crisis.">
+           Assistance with medical bills, groceries and everyday expenses for low-income families going through a crisis.
+        </p>
+      </div>
+
+      <div class="reveal lift bg-white rounded-3xl p-8 shadow-card ring-1 ring-sky2/60">
+        <div class="h-14 w-14 rounded-2xl bg-sky1 flex items-center justify-center text-azuredeep">
+          <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 11h16v8a2 2 0 01-2 2H7a2 2 0 01-2-2zM8 11V8a5 5 0 0110 0v3" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="mt-5 font-serif text-2xl text-ink" data-en="Community food benefits" data-es="Beneficios de comida">Community food benefits</h3>
+        <p class="mt-3 text-[15px] leading-relaxed text-slatesoft"
+           data-en="When there are no direct funds, we organize a plate-sale benefit right away — neighbors feeding neighbors to raise what a family needs."
+           data-es="Cuando no hay fondos directos, organizamos de inmediato una venta de platos de comida — vecinos ayudando a vecinos para reunir lo que una familia necesita.">
+           When there are no direct funds, we organize a plate-sale benefit right away — neighbors feeding neighbors to raise what a family needs.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRANSPARENCY BANNER -->
+  <div class="max-w-6xl mx-auto px-5 pb-20">
+    <div class="reveal relative overflow-hidden rounded-[32px] bg-gradient-to-br from-azuredeep to-ink text-white px-8 sm:px-14 py-14 shadow-soft">
+      <div class="absolute inset-0 opacity-10" style="background:radial-gradient(600px 200px at 80% 0%, #fff, transparent)"></div>
+      <div class="relative max-w-3xl">
+        <p class="text-[12px] font-semibold tracking-[.2em] uppercase text-goldsoft" data-en="Our golden rule" data-es="Nuestra regla de oro">Our golden rule</p>
+        <h2 class="mt-4 font-serif text-3xl sm:text-4xl leading-snug"
+            data-en="“We organize the benefit — but the family collects the money directly.”"
+            data-es="“Nosotros organizamos el beneficio — pero la familia recauda el dinero directamente.”">
+            “We organize the benefit — but the family collects the money directly.”
+        </h2>
+        <p class="mt-5 text-[16px] leading-relaxed text-white/80"
+           data-en="Total transparency. We always ask that a relative receive the funds first-hand, so every donor knows exactly where their love is going."
+           data-es="Transparencia total. Siempre pedimos que un familiar reciba los fondos de primera mano, para que cada donante sepa exactamente a dónde va su amor.">
+           Total transparency. We always ask that a relative receive the funds first-hand, so every donor knows exactly where their love is going.
+        </p>
+        <a data-nav="help" class="cursor-pointer mt-7 inline-flex items-center gap-2 bg-white text-ink font-semibold rounded-full px-6 py-3 hover:bg-cream transition">
+          <span data-en="See how it works" data-es="Ver cómo funciona">See how it works</span> →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<!-- PAGE: STORY (Marlogee & Gabriel)                              -->
+<!-- ============================================================= -->
+<section class="page" data-page="story">
+  <div class="heaven relative overflow-hidden">
+    <div class="cloud" style="top:20%; width:260px; height:70px; animation-duration:80s"></div>
+    <div class="max-w-4xl mx-auto px-5 pt-16 pb-10 text-center relative">
+      <p class="reveal text-[12px] font-semibold tracking-[.2em] uppercase text-golddeep" data-en="Our story · The why behind it all" data-es="Nuestra historia · El porqué de todo">Our story · The why behind it all</p>
+      <h1 class="reveal mt-4 font-serif text-4xl sm:text-5xl text-ink" data-en="Marlogee &amp; Gabriel" data-es="Marlogee y Gabriel">Marlogee &amp; Gabriel</h1>
+      <p class="reveal mt-5 text-[17px] leading-relaxed text-slatesoft max-w-2xl mx-auto"
+         data-en="A foundation born from a mother's love — and from a promise that no one else should suffer alone."
+         data-es="Una fundación nacida del amor de una madre — y de una promesa: que nadie más debe sufrir en soledad.">
+         A foundation born from a mother's love — and from a promise that no one else should suffer alone.
+      </p>
+    </div>
+  </div>
+
+  <!-- Gabriel memorial -->
+  <div class="max-w-6xl mx-auto px-5 py-16">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="reveal order-2 lg:order-1">
+        <p class="font-script text-4xl text-azuredeep">In loving memory</p>
+        <h2 class="mt-2 font-serif text-4xl text-ink">Gabriel Ángel Maciel</h2>
+        <p class="mt-2 text-[14px] tracking-wide text-golddeep font-semibold">Sunrise · October 26, 1992 🕊️</p>
+
+        <div class="mt-6 space-y-4 text-[16px] leading-relaxed text-slatesoft">
+          <p data-en="In December 2014, this foundation was created in memory of my son, Gabriel Ángel Maciel. When Gabriel passed away, I did not have the resources for his funeral."
+             data-es="En diciembre de 2014 nació esta fundación en memoria de mi hijo, Gabriel Ángel Maciel. Cuando Gabriel falleció, yo no tenía recursos para su funeral.">
+             In December 2014, this foundation was created in memory of my son, Gabriel Ángel Maciel. When Gabriel passed away, I did not have the resources for his funeral.
+          </p>
+          <p data-en="I asked the city for help, and I was passed from one person to another — six different people — having to repeat my painful story over and over, only to be told in the end that they could not help me. It was frustrating and heartbreaking."
+             data-es="Pedí ayuda a la ciudad y me pasaron de una persona a otra — seis personas distintas — teniendo que repetir mi dolorosa historia una y otra vez, para que al final me dijeran que no podían ayudarme. Fue frustrante y doloroso.">
+             I asked the city for help, and I was passed from one person to another — six different people — having to repeat my painful story over and over, only to be told in the end that they could not help me. It was frustrating and heartbreaking.
+          </p>
+          <p class="font-serif italic text-ink text-[18px]" data-en="“I decided that no one else should ever go through that.”" data-es="“Decidí que nadie más debía pasar por eso.”">“I decided that no one else should ever go through that.”</p>
+        </div>
+
+        <div class="mt-7 rounded-2xl bg-mist ring-1 ring-sky2 p-5 text-[15px] text-slatesoft italic">
+          <p data-en="“Baby boy… like you used to tell me — ‘it's all good mommy, I love you patches.’ I love you too, my patches, and always will.”"
+             data-es="“Mi niño… como solías decirme — ‘it's all good mommy, I love you patches.’ Yo también te amo, mi patches, y siempre lo haré.”">
+             “Baby boy… like you used to tell me — ‘it's all good mommy, I love you patches.’ I love you too, my patches, and always will.”
+          </p>
+        </div>
+      </div>
+
+      <div class="reveal order-1 lg:order-2 grid grid-cols-2 gap-4">
+        <img src="images/gabriel.jpg" alt="Gabriel Ángel Maciel" class="col-span-2 w-full h-72 object-cover rounded-3xl shadow-card ring-1 ring-white" />
+        <img src="images/gabriel-memorial.jpg" alt="Memorial for Gabriel" class="w-full h-44 object-cover rounded-2xl shadow-sm ring-1 ring-white" />
+        <img src="images/gabriel-peace.jpg" alt="Finally at peace — Gabriel" class="w-full h-44 object-cover rounded-2xl shadow-sm ring-1 ring-white" />
+      </div>
+    </div>
+  </div>
+
+  <!-- wings divider -->
+  <div class="flex justify-center py-2"><img src="images/logo-en.jpg" alt="" class="wings h-16 w-16 rounded-full object-cover ring-1 ring-gold/30"/></div>
+
+  <!-- Marlogee -->
+  <div class="bg-white border-y border-sky2/60">
+    <div class="max-w-6xl mx-auto px-5 py-16">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="reveal grid grid-cols-2 gap-4">
+          <img src="images/marlogee-1.jpg" alt="Marlogee, founder" class="w-full h-80 object-cover rounded-3xl shadow-card ring-1 ring-white" />
+          <img src="images/marlogee-2.jpg" alt="Marlogee" class="w-full h-80 object-cover rounded-3xl shadow-card ring-1 ring-white mt-6" />
+        </div>
+        <div class="reveal">
+          <p class="text-[12px] font-semibold tracking-[.2em] uppercase text-golddeep" data-en="The founder" data-es="La fundadora">The founder</p>
+          <h2 class="mt-3 font-serif text-4xl text-ink">Marlogee</h2>
+          <p class="mt-2 text-[15px] text-slatesoft" data-en="Gabriel's mother · Houston, Texas" data-es="Madre de Gabriel · Houston, Texas">Gabriel's mother · Houston, Texas</p>
+
+          <div class="mt-5 space-y-4 text-[16px] leading-relaxed text-slatesoft">
+            <p data-en="Out of her own loss, Marlogee turned grief into a mission. Since 2014 she has cooked and sold plates of food to raise funds, helping families with medical bills, funeral costs and everyday needs."
+               data-es="Desde su propia pérdida, Marlogee convirtió el dolor en misión. Desde 2014 cocina y vende platos de comida para recaudar fondos, ayudando a familias con gastos médicos, funerarios y del día a día.">
+               Out of her own loss, Marlogee turned grief into a mission. Since 2014 she has cooked and sold plates of food to raise funds, helping families with medical bills, funeral costs and everyday needs.
+            </p>
+            <p data-en="In our foundation we don't ask bureaucratic questions. If someone needs help and there are no direct funds, we organize a food benefit immediately — always asking a relative to collect the money directly, for full transparency."
+               data-es="En nuestra fundación no hacemos preguntas burocráticas. Si alguien necesita ayuda y no hay fondos directos, organizamos un beneficio de comida de inmediato — pidiendo siempre que un familiar recaude el dinero directamente, para total transparencia.">
+               In our foundation we don't ask bureaucratic questions. If someone needs help and there are no direct funds, we organize a food benefit immediately — always asking a relative to collect the money directly, for full transparency.
+            </p>
+          </div>
+
+          <div class="mt-6 inline-flex items-center gap-3 rounded-2xl bg-sky1 px-5 py-3 ring-1 ring-sky2">
+            <span class="text-2xl">🎶</span>
+            <p class="text-[14px] text-azuredeep italic font-serif" data-en="Beyond the foundation, Marlogee also loves to sing — finding light and healing in music." data-es="Más allá de la fundación, a Marlogee también le encanta cantar — encontrando luz y sanación en la música.">Beyond the foundation, Marlogee also loves to sing — finding light and healing in music.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-3xl mx-auto px-5 py-16 text-center reveal">
+    <h2 class="font-serif text-3xl text-ink" data-en="Carry the promise forward" data-es="Lleva la promesa más lejos">Carry the promise forward</h2>
+    <p class="mt-4 text-slatesoft" data-en="Whether you need help or want to give it, you are part of Gabriel's story now." data-es="Ya sea que necesites ayuda o quieras darla, ahora eres parte de la historia de Gabriel.">Whether you need help or want to give it, you are part of Gabriel's story now.</p>
+    <div class="mt-7 flex flex-wrap gap-3 justify-center">
+      <a data-nav="donate" class="cursor-pointer bg-gold hover:bg-golddeep text-white font-semibold rounded-full px-7 py-3.5 shadow-sm transition" data-en="Donate now" data-es="Donar ahora">Donate now</a>
+      <a data-nav="request" class="cursor-pointer bg-white text-ink border border-azure/40 font-semibold rounded-full px-7 py-3.5 hover:bg-mist transition" data-en="Request support" data-es="Solicitar apoyo">Request support</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<!-- PAGE: HELP (How We Help / Food Benefits)                      -->
+<!-- ============================================================= -->
+<section class="page" data-page="help">
+  <div class="heaven relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-5 pt-16 pb-10 text-center relative">
+      <p class="reveal text-[12px] font-semibold tracking-[.2em] uppercase text-golddeep" data-en="How we help" data-es="Cómo ayudamos">How we help</p>
+      <h1 class="reveal mt-4 font-serif text-4xl sm:text-5xl text-ink" data-en="Real help, given with dignity" data-es="Ayuda real, dada con dignidad">Real help, given with dignity</h1>
+      <p class="reveal mt-5 text-[17px] leading-relaxed text-slatesoft max-w-2xl mx-auto"
+         data-en="No paperwork mazes. No making you relive your pain. Just neighbors showing up — often around a plate of warm food."
+         data-es="Sin laberintos de papeleo. Sin hacerte revivir tu dolor. Solo vecinos presentes — muchas veces alrededor de un plato de comida caliente.">
+         No paperwork mazes. No making you relive your pain. Just neighbors showing up — often around a plate of warm food.
+      </p>
+    </div>
+  </div>
+
+  <!-- Pillars detailed -->
+  <div class="max-w-6xl mx-auto px-5 py-16 grid md:grid-cols-3 gap-6">
+    <div class="reveal lift bg-white rounded-3xl p-8 shadow-card ring-1 ring-sky2/60">
+      <span class="text-3xl">🕊️</span>
+      <h3 class="mt-4 font-serif text-2xl text-ink" data-en="Funeral &amp; burial" data-es="Funeral y sepelio">Funeral &amp; burial</h3>
+      <p class="mt-3 text-[15px] leading-relaxed text-slatesoft" data-en="Helping families afford a dignified goodbye when they have nowhere else to turn." data-es="Ayudamos a las familias a costear una despedida digna cuando no tienen a dónde acudir.">Helping families afford a dignified goodbye when they have nowhere else to turn.</p>
+    </div>
+    <div class="reveal lift bg-white rounded-3xl p-8 shadow-card ring-1 ring-sky2/60">
+      <span class="text-3xl">💊</span>
+      <h3 class="mt-4 font-serif text-2xl text-ink" data-en="Medical &amp; daily life" data-es="Salud y vida diaria">Medical &amp; daily life</h3>
+      <p class="mt-3 text-[15px] leading-relaxed text-slatesoft" data-en="Support with medical bills, groceries and the everyday costs that pile up during a crisis." data-es="Apoyo con gastos médicos, despensa y los costos cotidianos que se acumulan durante una crisis.">Support with medical bills, groceries and the everyday costs that pile up during a crisis.</p>
+    </div>
+    <div class="reveal lift bg-white rounded-3xl p-8 shadow-card ring-1 ring-sky2/60">
+      <span class="text-3xl">🍽️</span>
+      <h3 class="mt-4 font-serif text-2xl text-ink" data-en="Food benefits" data-es="Ventas de comida">Food benefits</h3>
+      <p class="mt-3 text-[15px] leading-relaxed text-slatesoft" data-en="Our engine: home-cooked plate sales that turn community appetite into real relief." data-es="Nuestro motor: ventas de platos caseros que convierten el apetito de la comunidad en alivio real.">Our engine: home-cooked plate sales that turn community appetite into real relief.</p>
+    </div>
+  </div>
+
+  <!-- Food model -->
+  <div class="bg-white border-y border-sky2/60">
+    <div class="max-w-6xl mx-auto px-5 py-16 grid lg:grid-cols-2 gap-12 items-center">
+      <div class="reveal">
+        <div class="rounded-[28px] overflow-hidden shadow-soft ring-1 ring-white p-2 bg-white">
+          <img src="images/comida.jpg" alt="Plate-sale food benefit" class="w-full h-[360px] object-cover rounded-[22px]" />
+        </div>
+      </div>
+      <div class="reveal">
+        <p class="text-[12px] font-semibold tracking-[.2em] uppercase text-golddeep" data-en="The food-benefit model" data-es="El modelo de venta de comida">The food-benefit model</p>
+        <h2 class="mt-3 font-serif text-4xl text-ink" data-en="Community fed, families lifted" data-es="Comunidad alimentada, familias levantadas">Community fed, families lifted</h2>
+        <ol class="mt-6 space-y-5">
+          <li class="flex gap-4"><span class="shrink-0 h-9 w-9 rounded-full bg-sky1 text-azuredeep font-serif font-semibold flex items-center justify-center">1</span>
+            <p class="text-[15.5px] leading-relaxed text-slatesoft" data-en="A family reaches out in need — no hard questions asked." data-es="Una familia pide ayuda — sin preguntas difíciles.">A family reaches out in need — no hard questions asked.</p></li>
+          <li class="flex gap-4"><span class="shrink-0 h-9 w-9 rounded-full bg-sky1 text-azuredeep font-serif font-semibold flex items-center justify-center">2</span>
+            <p class="text-[15.5px] leading-relaxed text-slatesoft" data-en="If there are no direct funds, we organize a plate-sale benefit right away." data-es="Si no hay fondos directos, organizamos de inmediato una venta de platos.">If there are no direct funds, we organize a plate-sale benefit right away.</p></li>
+          <li class="flex gap-4"><span class="shrink-0 h-9 w-9 rounded-full bg-sky1 text-azuredeep font-serif font-semibold flex items-center justify-center">3</span>
+            <p class="text-[15.5px] leading-relaxed text-slatesoft" data-en="The community buys plates of home-cooked food to support the cause." data-es="La comunidad compra platos de comida casera para apoyar la causa.">The community buys plates of home-cooked food to support the cause.</p></li>
+          <li class="flex gap-4"><span class="shrink-0 h-9 w-9 rounded-full bg-gold text-white font-serif font-semibold flex items-center justify-center">4</span>
+            <p class="text-[15.5px] leading-relaxed text-ink font-medium" data-en="A relative of the family collects the money directly — total transparency." data-es="Un familiar de la familia recauda el dinero directamente — transparencia total.">A relative of the family collects the money directly — total transparency.</p></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- transparency reprise -->
+  <div class="max-w-5xl mx-auto px-5 py-16">
+    <div class="reveal text-center rounded-[32px] bg-mist ring-1 ring-sky2 px-8 py-12">
+      <span class="text-4xl">🤝</span>
+      <h2 class="mt-4 font-serif text-3xl sm:text-4xl text-ink" data-en="Trust is everything" data-es="La confianza lo es todo">Trust is everything</h2>
+      <p class="mt-4 text-[16px] leading-relaxed text-slatesoft max-w-2xl mx-auto"
+         data-en="We never hold the money in the middle. We bring the community together and the family receives every dollar first-hand. That is the promise we keep with every donor and every family."
+         data-es="Nunca retenemos el dinero en medio. Reunimos a la comunidad y la familia recibe cada dólar de primera mano. Esa es la promesa que cumplimos con cada donante y cada familia.">
+         We never hold the money in the middle. We bring the community together and the family receives every dollar first-hand. That is the promise we keep with every donor and every family.
+      </p>
+      <a data-nav="donate" class="cursor-pointer mt-7 inline-flex bg-azuredeep hover:bg-ink text-white font-semibold rounded-full px-7 py-3.5 transition" data-en="Support a family today" data-es="Apoya a una familia hoy">Support a family today</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<!-- PAGE: DONATE                                                  -->
+<!-- ============================================================= -->
+<section class="page" data-page="donate">
+  <div class="heaven relative overflow-hidden">
+    <div class="cloud" style="top:18%; width:240px; height:64px; animation-duration:70s"></div>
+    <div class="max-w-4xl mx-auto px-5 pt-16 pb-10 text-center relative">
+      <p class="reveal text-[12px] font-semibold tracking-[.2em] uppercase text-golddeep" data-en="Donate" data-es="Donar">Donate</p>
+      <h1 class="reveal mt-4 font-serif text-4xl sm:text-5xl text-ink" data-en="Your gift becomes someone's relief" data-es="Tu donación se vuelve el alivio de alguien">Your gift becomes someone's relief</h1>
+      <p class="reveal mt-5 text-[17px] leading-relaxed text-slatesoft max-w-2xl mx-auto"
+         data-en="Give in seconds with Cash App or Zelle. Every dollar goes toward funerals, medical needs and families in crisis across Houston."
+         data-es="Dona en segundos con Cash App o Zelle. Cada dólar se destina a funerales, necesidades médicas y familias en crisis en todo Houston.">
+         Give in seconds with Cash App or Zelle. Every dollar goes toward funerals, medical needs and families in crisis across Houston.
+      </p>
+    </div>
+  </div>
+
+  <div class="max-w-5xl mx-auto px-5 py-14">
+    <div class="grid md:grid-cols-2 gap-7">
+
+      <!-- Cash App -->
+      <div class="reveal bg-white rounded-3xl shadow-card ring-1 ring-sky2/60 overflow-hidden">
+        <div class="bg-[#00d54b] px-7 py-5 flex items-center justify-between">
+          <span class="text-white font-bold text-lg tracking-tight">Cash App</span>
+          <span class="h-9 w-9 rounded-xl bg-white flex items-center justify-center text-[#00d54b] font-bold text-xl">$</span>
+        </div>
+        <div class="p-7 text-center">
+          <div class="rounded-2xl ring-1 ring-sky2 inline-block p-2 bg-white">
+            <img src="images/cashapp-qr.jpg" alt="Scan to pay Los Angeles De Gabriel on Cash App" class="w-52 h-52 object-contain mx-auto" />
+          </div>
+          <p class="mt-4 text-[13px] text-slatesoft" data-en="Scan the code, or send to:" data-es="Escanea el código, o envía a:">Scan the code, or send to:</p>
+          <button data-copy="$LosAngelesDeGabriel" class="copybtn mt-2 inline-flex items-center gap-2 bg-mist hover:bg-sky1 ring-1 ring-sky2 rounded-full pl-5 pr-4 py-2.5 font-semibold text-ink transition">
+            $LosAngelesDeGabriel
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="5" width="9" height="9" rx="2"/><path d="M3 11V3a2 2 0 012-2h6" stroke-linecap="round"/></svg>
+          </button>
+          <p class="mt-3 text-[12px] text-slatesoft/70" data-en="Tap to copy the $Cashtag" data-es="Toca para copiar el $Cashtag">Tap to copy the $Cashtag</p>
+        </div>
+      </div>
+
+      <!-- Zelle -->
+      <div class="reveal bg-white rounded-3xl shadow-card ring-1 ring-sky2/60 overflow-hidden">
+        <div class="bg-[#6d1ed4] px-7 py-5 flex items-center justify-between">
+          <span class="text-white font-bold text-lg tracking-tight">Zelle®</span>
+          <span class="h-9 w-9 rounded-xl bg-white flex items-center justify-center text-[#6d1ed4] font-bold text-xl">Z</span>
+        </div>
+        <div class="p-7 text-center flex flex-col items-center justify-center min-h-[19rem]">
+          <p class="text-[13px] text-slatesoft" data-en="Send your Zelle gift to our phone number:" data-es="Envía tu donación por Zelle a nuestro número:">Send your Zelle gift to our phone number:</p>
+          <button data-copy="713-494-2268" class="copybtn mt-3 inline-flex items-center gap-2 bg-mist hover:bg-sky1 ring-1 ring-sky2 rounded-full pl-5 pr-4 py-3 font-bold text-xl text-ink transition">
+            (713) 494-2268
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="5" width="9" height="9" rx="2"/><path d="M3 11V3a2 2 0 012-2h6" stroke-linecap="round"/></svg>
+          </button>
+          <p class="mt-3 text-[12px] text-slatesoft/70" data-en="Tap to copy the number" data-es="Toca para copiar el número">Tap to copy the number</p>
+          <div class="mt-5 w-full goldline"></div>
+          <p class="mt-4 text-[13px] text-slatesoft" data-en="Registered to" data-es="Registrado a nombre de">Registered to</p>
+          <p class="font-serif text-ink text-[15px]" data-en="Gabriel's Angels Foundation" data-es="Fundación Los Ángeles de Gabriel">Gabriel's Angels Foundation</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- transparency note -->
+    <div class="reveal mt-8 rounded-3xl bg-gradient-to-br from-azuredeep to-ink text-white px-7 sm:px-10 py-9 shadow-soft">
+      <div class="flex flex-col sm:flex-row items-start gap-5">
+        <span class="text-3xl">♥</span>
+        <div>
+          <h3 class="font-serif text-2xl" data-en="Giving for a specific family?" data-es="¿Donando para una familia en específico?">Giving for a specific family?</h3>
+          <p class="mt-2 text-[15px] leading-relaxed text-white/80"
+             data-en="For benefits tied to a specific family, we always direct donors so the family's relative receives the funds directly — keeping our promise of total transparency. Message us and we'll guide you."
+             data-es="Para beneficios de una familia específica, siempre orientamos a los donantes para que un familiar reciba los fondos directamente — cumpliendo nuestra promesa de transparencia total. Escríbenos y te guiamos.">
+             For benefits tied to a specific family, we always direct donors so the family's relative receives the funds directly — keeping our promise of total transparency. Message us and we'll guide you.
+          </p>
+          <a href="mailto:angelstogetherwecan@gmail.com" class="mt-4 inline-flex items-center gap-2 bg-white text-ink font-semibold rounded-full px-5 py-2.5 hover:bg-cream transition text-[14px]">angelstogetherwecan@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<!-- PAGE: REQUEST (Get Help)                                      -->
+<!-- ============================================================= -->
+<section class="page" data-page="request">
+  <div class="heaven relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-5 pt-16 pb-10 text-center relative">
+      <p class="reveal text-[12px] font-semibold tracking-[.2em] uppercase text-golddeep" data-en="Get help" data-es="Solicitar apoyo">Get help</p>
+      <h1 class="reveal mt-4 font-serif text-4xl sm:text-5xl text-ink" data-en="Reaching out is enough" data-es="Pedir ayuda es suficiente">Reaching out is enough</h1>
+      <p class="reveal mt-5 text-[17px] leading-relaxed text-slatesoft max-w-2xl mx-auto"
+         data-en="You won't be passed around. You won't have to repeat your story six times. Tell us only what you're comfortable sharing — we'll take it from there."
+         data-es="No te pasaremos de mano en mano. No tendrás que repetir tu historia seis veces. Cuéntanos solo lo que te sientas cómodo compartiendo — nosotros nos encargamos del resto.">
+         You won't be passed around. You won't have to repeat your story six times. Tell us only what you're comfortable sharing — we'll take it from there.
+      </p>
+    </div>
+  </div>
+
+  <div class="max-w-5xl mx-auto px-5 py-14 grid lg:grid-cols-5 gap-8">
+    <!-- form -->
+    <form id="helpForm" class="reveal lg:col-span-3 bg-white rounded-3xl shadow-card ring-1 ring-sky2/60 p-7 sm:p-9 space-y-5" onsubmit="return false">
+      <div>
+        <label class="block text-[13px] font-semibold text-ink mb-1.5" data-en="Your name" data-es="Tu nombre">Your name</label>
+        <input type="text" name="name" class="w-full rounded-xl border border-sky2 bg-mist/50 px-4 py-3 text-[15px] focus:outline-none focus:ring-2 focus:ring-azure/50 focus:border-azure transition" placeholder="" />
+      </div>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-[13px] font-semibold text-ink mb-1.5" data-en="Phone or email" data-es="Teléfono o correo">Phone or email</label>
+          <input type="text" name="contact" class="w-full rounded-xl border border-sky2 bg-mist/50 px-4 py-3 text-[15px] focus:outline-none focus:ring-2 focus:ring-azure/50 focus:border-azure transition" />
+        </div>
+        <div>
+          <label class="block text-[13px] font-semibold text-ink mb-1.5" data-en="Type of help" data-es="Tipo de ayuda">Type of help</label>
+          <select name="type" class="w-full rounded-xl border border-sky2 bg-mist/50 px-4 py-3 text-[15px] text-slatesoft focus:outline-none focus:ring-2 focus:ring-azure/50 focus:border-azure transition">
+            <option data-en="Funeral support" data-es="Apoyo funerario">Funeral support</option>
+            <option data-en="Medical expenses" data-es="Gastos médicos">Medical expenses</option>
+            <option data-en="Daily / household needs" data-es="Necesidades del día a día">Daily / household needs</option>
+            <option data-en="Other" data-es="Otro">Other</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <label class="block text-[13px] font-semibold text-ink mb-1.5" data-en="How can we help? (optional)" data-es="¿Cómo podemos ayudar? (opcional)">How can we help? (optional)</label>
+        <textarea name="message" rows="4" class="w-full rounded-xl border border-sky2 bg-mist/50 px-4 py-3 text-[15px] focus:outline-none focus:ring-2 focus:ring-azure/50 focus:border-azure transition" placeholder=""></textarea>
+        <p class="mt-1.5 text-[12px] text-slatesoft/70" data-en="Share only what you're comfortable with. No detail is required." data-es="Comparte solo lo que te sientas cómodo. Ningún detalle es obligatorio.">Share only what you're comfortable with. No detail is required.</p>
+      </div>
+      <button type="submit" id="helpSubmit" class="w-full bg-azuredeep hover:bg-ink text-white font-semibold rounded-xl py-4 shadow-soft transition flex items-center justify-center gap-2">
+        <span data-en="Send my request" data-es="Enviar mi solicitud">Send my request</span>
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 9l14-7-5 15-3-6-6-2z" stroke-linejoin="round"/></svg>
+      </button>
+      <p class="text-center text-[12px] text-slatesoft/70" data-en="This opens your email to send us the request securely." data-es="Esto abre tu correo para enviarnos la solicitud de forma segura.">This opens your email to send us the request securely.</p>
+    </form>
+
+    <!-- contact card -->
+    <div class="reveal lg:col-span-2 space-y-5">
+      <div class="bg-gradient-to-br from-azuredeep to-ink text-white rounded-3xl p-7 shadow-soft">
+        <h3 class="font-serif text-2xl" data-en="Talk to us directly" data-es="Habla con nosotros directamente">Talk to us directly</h3>
+        <p class="mt-2 text-[14px] text-white/80" data-en="A real person from the foundation will answer." data-es="Te responderá una persona real de la fundación.">A real person from the foundation will answer.</p>
+        <div class="mt-5 space-y-4 text-[15px]">
+          <a href="tel:+17134942268" class="flex items-center gap-3 hover:text-goldsoft transition">
+            <span class="h-9 w-9 rounded-xl bg-white/15 flex items-center justify-center">📞</span> (713) 494-2268
+          </a>
+          <a href="mailto:angelstogetherwecan@gmail.com" class="flex items-center gap-3 hover:text-goldsoft transition break-all">
+            <span class="h-9 w-9 rounded-xl bg-white/15 flex items-center justify-center">✉️</span> angelstogetherwecan@gmail.com
+          </a>
+          <div class="flex items-center gap-3">
+            <span class="h-9 w-9 rounded-xl bg-white/15 flex items-center justify-center">📍</span> Houston, Texas
+          </div>
+        </div>
+      </div>
+      <div class="bg-white rounded-3xl p-7 ring-1 ring-sky2/60 shadow-card">
+        <p class="font-serif text-xl text-ink italic" data-en="“If someone needs help, we don't ask difficult questions. We just help.”" data-es="“Si alguien necesita ayuda, no hacemos preguntas difíciles. Simplemente ayudamos.”">“If someone needs help, we don't ask difficult questions. We just help.”</p>
+        <p class="mt-3 text-[13px] text-golddeep font-semibold">— Marlogee</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="bg-ink text-white/80">
+  <div class="max-w-6xl mx-auto px-5 py-14">
+    <div class="grid md:grid-cols-3 gap-10">
+      <div>
+        <div class="flex items-center gap-3">
+          <img src="images/logo-en.jpg" alt="" class="h-12 w-12 rounded-full object-cover ring-1 ring-gold/40" />
+          <div class="leading-tight">
+            <p class="font-serif text-white text-[16px]" data-en="Gabriel's Angels Foundation" data-es="Fundación Los Ángeles de Gabriel">Gabriel's Angels Foundation</p>
+            <p class="text-[12px] tracking-wide text-white/60">Houston, TX · Non-Profit</p>
+          </div>
+        </div>
+        <p class="mt-4 text-[14px] leading-relaxed text-white/60 max-w-xs" data-en="In memory of Gabriel Ángel Maciel. Dignified, immediate help for families in their hardest moments." data-es="En memoria de Gabriel Ángel Maciel. Ayuda digna e inmediata para familias en sus momentos más difíciles.">In memory of Gabriel Ángel Maciel. Dignified, immediate help for families in their hardest moments.</p>
+        <p class="mt-4 font-script text-2xl text-goldsoft">Together We Can</p>
+      </div>
+
+      <div>
+        <p class="text-[12px] font-semibold tracking-[.2em] uppercase text-white/50" data-en="Explore" data-es="Explora">Explore</p>
+        <ul class="mt-4 space-y-2.5 text-[14px]">
+          <li><a data-nav="home" class="cursor-pointer hover:text-white transition" data-en="Home" data-es="Inicio">Home</a></li>
+          <li><a data-nav="story" class="cursor-pointer hover:text-white transition" data-en="Marlogee &amp; Gabriel" data-es="Marlogee y Gabriel">Marlogee &amp; Gabriel</a></li>
+          <li><a data-nav="help" class="cursor-pointer hover:text-white transition" data-en="How We Help" data-es="Cómo Ayudamos">How We Help</a></li>
+          <li><a data-nav="donate" class="cursor-pointer hover:text-white transition" data-en="Donate" data-es="Donar">Donate</a></li>
+          <li><a data-nav="request" class="cursor-pointer hover:text-white transition" data-en="Get Help" data-es="Solicitar Apoyo">Get Help</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="text-[12px] font-semibold tracking-[.2em] uppercase text-white/50" data-en="Contact &amp; giving" data-es="Contacto y donaciones">Contact &amp; giving</p>
+        <ul class="mt-4 space-y-2.5 text-[14px]">
+          <li><a href="tel:+17134942268" class="hover:text-white transition">📞 (713) 494-2268</a></li>
+          <li><a href="mailto:angelstogetherwecan@gmail.com" class="hover:text-white transition break-all">✉️ angelstogetherwecan@gmail.com</a></li>
+          <li class="pt-2 text-white/60">Cash App: <span class="text-white">$LosAngelesDeGabriel</span></li>
+          <li class="text-white/60">Zelle: <span class="text-white">(713) 494-2268</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-[12.5px] text-white/45">
+      <p>© <span id="year"></span> Gabriel's Angels Foundation · Los Ángeles de Gabriel</p>
+      <p data-en="Made with love for the Houston community 🕊️" data-es="Hecho con amor para la comunidad de Houston 🕊️">Made with love for the Houston community 🕊️</p>
+    </div>
+  </div>
+</footer>
+
+<div id="toast" class="copy-toast"></div>
+
+<!-- ===================== SCRIPT ===================== -->
+<script>
+(function(){
+  var pages = document.querySelectorAll('.page');
+  var navItems = document.querySelectorAll('[data-nav]');
+  var topNav = document.querySelectorAll('nav .nav-link');
+
+  function showReveals(scope){
+    var els = (scope || document).querySelectorAll('.reveal');
+    els.forEach(function(el){ setTimeout(function(){ el.classList.add('in'); }, 40); });
+  }
+
+  // Intersection observer for reveals inside long pages
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  }, { threshold:0.12 });
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  function navigate(target){
+    pages.forEach(function(p){ p.classList.toggle('active', p.dataset.page===target); });
+    // active link state
+    topNav.forEach(function(l){ l.classList.toggle('active', l.dataset.nav===target); });
+    window.scrollTo({ top:0, behavior:'smooth' });
+    // re-trigger reveals for the now-visible page
+    var active = document.querySelector('.page.active');
+    if(active){ active.querySelectorAll('.reveal').forEach(function(el){ el.classList.remove('in'); io.observe(el); showReveals(active); }); }
+    // close mobile menu
+    document.getElementById('mobileMenu').classList.add('hidden');
+    if(history && history.replaceState){ history.replaceState(null,'', '#'+target); }
+  }
+
+  navItems.forEach(function(item){
+    item.addEventListener('click', function(e){
+      e.preventDefault();
+      navigate(item.dataset.nav);
+    });
+  });
+
+  // deep link support
+  var initial = (location.hash || '#home').replace('#','');
+  if(document.querySelector('.page[data-page="'+initial+'"]')) navigate(initial);
+  else showReveals(document.querySelector('.page.active'));
+
+  // ---------- Mobile menu ----------
+  document.getElementById('menuBtn').addEventListener('click', function(){
+    document.getElementById('mobileMenu').classList.toggle('hidden');
+  });
+
+  // ---------- Language toggle ----------
+  var lang = localStorage.getItem('lag_lang') || 'en';
+  function applyLang(l){
+    document.documentElement.lang = l;
+    document.querySelectorAll('[data-en]').forEach(function(el){
+      var val = el.getAttribute('data-'+l);
+      if(val===null) return;
+      // For options keep as text; for elements with only text content
+      if(el.children.length===0 || el.tagName==='OPTION'){ el.textContent = val; }
+      else {
+        // replace only direct text nodes if mixed; fallback to innerHTML for simple spans
+        el.innerHTML = val;
+      }
+    });
+    document.getElementById('langLabel').textContent = (l==='en') ? 'Español' : 'English';
+    localStorage.setItem('lag_lang', l);
+    lang = l;
+  }
+  // Initial apply (handles spans with mixed content carefully: we only set those that are simple)
+  applyLang(lang);
+  document.getElementById('langBtn').addEventListener('click', function(){
+    applyLang(lang==='en' ? 'es' : 'en');
+  });
+
+  // ---------- Copy buttons ----------
+  var toast = document.getElementById('toast');
+  function showToast(msg){
+    toast.textContent = msg; toast.classList.add('show');
+    setTimeout(function(){ toast.classList.remove('show'); }, 1800);
+  }
+  document.querySelectorAll('.copybtn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var txt = btn.getAttribute('data-copy');
+      navigator.clipboard.writeText(txt).then(function(){
+        showToast((lang==='en'?'Copied: ':'Copiado: ')+txt);
+      }).catch(function(){ showToast(txt); });
+    });
+  });
+
+  // ---------- Help form -> mailto ----------
+  var form = document.getElementById('helpForm');
+  if(form){
+    form.addEventListener('submit', function(){
+      var name = form.name.value || '';
+      var contact = form.contact.value || '';
+      var type = form.type.value || '';
+      var message = form.message.value || '';
+      var subjEN = 'Help request — Gabriel\'s Angels Foundation';
+      var subjES = 'Solicitud de ayuda — Fundación Los Ángeles de Gabriel';
+      var subject = (lang==='en')?subjEN:subjES;
+      var body =
+        (lang==='en'?'Name: ':'Nombre: ')+name+'\n'+
+        (lang==='en'?'Contact: ':'Contacto: ')+contact+'\n'+
+        (lang==='en'?'Type of help: ':'Tipo de ayuda: ')+type+'\n\n'+
+        (lang==='en'?'Message:\n':'Mensaje:\n')+message;
+      window.location.href = 'mailto:angelstogetherwecan@gmail.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+    });
+  }
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
