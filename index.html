@@ -262,7 +262,6 @@
       <a data-nav="story" class="nav-link cursor-pointer"  data-en="Marlogee &amp; Gabriel" data-es="Marlogee y Gabriel">Marlogee &amp; Gabriel</a>
       <a data-nav="help"  class="nav-link cursor-pointer"  data-en="How We Help" data-es="Cómo Ayudamos">How We Help</a>
       <a data-nav="donate" class="nav-link cursor-pointer" data-en="Donate"      data-es="Donar">Donate</a>
-      <a data-nav="request" class="nav-link cursor-pointer" data-en="Get Help"   data-es="Solicitar Apoyo">Get Help</a>
     </nav>
 
     <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
@@ -305,19 +304,11 @@
         </span>
         <svg class="text-gold shrink-0 transition-transform group-hover:translate-x-1" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
-      <a data-nav="donate" class="menu-card group flex items-center gap-4 rounded-2xl bg-white/80 ring-1 ring-sky2/70 shadow-card p-2.5 pr-4 cursor-pointer active:scale-[.98] transition">
+      <a data-nav="donate" class="menu-card group flex items-center gap-4 rounded-2xl bg-goldsoft/25 ring-2 ring-gold/60 shadow-card p-2.5 pr-4 cursor-pointer active:scale-[.98] transition">
         <img src="images/cat-donate.jpg" alt="" class="h-16 w-16 rounded-xl object-cover ring-1 ring-white shrink-0" />
         <span class="min-w-0 flex-1">
           <span class="block font-serif text-[19px] text-ink leading-tight" data-en="Donate" data-es="Donar">Donate</span>
-          <span class="block text-[12px] text-slatesoft truncate" data-en="Cash App &amp; Zelle" data-es="Cash App y Zelle">Cash App &amp; Zelle</span>
-        </span>
-        <svg class="text-gold shrink-0 transition-transform group-hover:translate-x-1" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-      <a data-nav="request" class="menu-card group flex items-center gap-4 rounded-2xl bg-white/80 ring-1 ring-sky2/70 shadow-card p-2.5 pr-4 cursor-pointer active:scale-[.98] transition lg:col-span-2 lg:w-1/2 lg:justify-self-center">
-        <img src="images/cat-request.jpg" alt="" class="h-16 w-16 rounded-xl object-cover ring-1 ring-white shrink-0" />
-        <span class="min-w-0 flex-1">
-          <span class="block font-serif text-[19px] text-ink leading-tight" data-en="Get Help" data-es="Solicitar Apoyo">Get Help</span>
-          <span class="block text-[12px] text-slatesoft truncate" data-en="Request support" data-es="Pide apoyo">Request support</span>
+          <span class="block text-[12px] text-golddeep font-medium truncate" data-en="Cash App &amp; Zelle · Every dollar helps" data-es="Cash App y Zelle · Cada dólar ayuda">Cash App &amp; Zelle · Every dollar helps</span>
         </span>
         <svg class="text-gold shrink-0 transition-transform group-hover:translate-x-1" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
@@ -361,14 +352,14 @@
              In Houston, we walk beside families in their hardest moments — covering funeral, medical and daily expenses. No bureaucracy. No painful questions. You should never have to repeat your grief to be helped.
           </p>
 
-          <div class="mt-9 flex flex-wrap gap-3">
-            <a data-nav="request" class="cursor-pointer inline-flex items-center gap-2 bg-azuredeep hover:bg-ink text-white font-semibold rounded-full px-7 py-3.5 shadow-soft transition">
-              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 1.8c2 4 6 4 6 8a6 6 0 11-12 0c0-1.6.8-2.8 1.6-3.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span data-en="I need help" data-es="Necesito ayuda">I need help</span>
+          <div class="mt-9 flex flex-wrap items-center gap-4">
+            <a data-nav="donate" class="cursor-pointer inline-flex items-center gap-2.5 bg-gold hover:bg-golddeep text-white font-semibold text-[17px] rounded-full px-9 py-4 shadow-soft transition">
+              <span class="text-white text-lg">♥</span>
+              <span data-en="Donate now" data-es="Donar ahora">Donate now</span>
             </a>
-            <a data-nav="donate" class="cursor-pointer inline-flex items-center gap-2 bg-white hover:bg-cream text-ink font-semibold rounded-full px-7 py-3.5 border border-gold/50 shadow-sm transition">
-              <span class="text-gold">♥</span>
-              <span data-en="I want to give" data-es="Quiero apoyar">I want to give</span>
+            <a data-nav="help" class="cursor-pointer inline-flex items-center gap-1.5 text-azuredeep hover:text-ink font-semibold transition">
+              <span data-en="See how we help" data-es="Mira cómo ayudamos">See how we help</span>
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M6 3l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
           </div>
 
@@ -582,10 +573,9 @@
 
   <div class="max-w-3xl mx-auto px-5 py-16 text-center reveal">
     <h2 class="font-serif text-3xl text-ink" data-en="Carry the promise forward" data-es="Lleva la promesa más lejos">Carry the promise forward</h2>
-    <p class="mt-4 text-slatesoft" data-en="Whether you need help or want to give it, you are part of Gabriel's story now." data-es="Ya sea que necesites ayuda o quieras darla, ahora eres parte de la historia de Gabriel.">Whether you need help or want to give it, you are part of Gabriel's story now.</p>
+    <p class="mt-4 text-slatesoft" data-en="Your gift becomes someone's relief. Be part of Gabriel's story today." data-es="Tu donación se vuelve el alivio de alguien. Sé parte de la historia de Gabriel hoy.">Your gift becomes someone's relief. Be part of Gabriel's story today.</p>
     <div class="mt-7 flex flex-wrap gap-3 justify-center">
-      <a data-nav="donate" class="cursor-pointer bg-gold hover:bg-golddeep text-white font-semibold rounded-full px-7 py-3.5 shadow-sm transition" data-en="Donate now" data-es="Donar ahora">Donate now</a>
-      <a data-nav="request" class="cursor-pointer bg-white text-ink border border-azure/40 font-semibold rounded-full px-7 py-3.5 hover:bg-mist transition" data-en="Request support" data-es="Solicitar apoyo">Request support</a>
+      <a data-nav="donate" class="cursor-pointer inline-flex items-center gap-2 bg-gold hover:bg-golddeep text-white font-semibold text-[17px] rounded-full px-9 py-4 shadow-soft transition" data-en="Donate now" data-es="Donar ahora">Donate now</a>
     </div>
   </div>
 </section>
@@ -969,7 +959,6 @@
           <li><a data-nav="story" class="cursor-pointer hover:text-white transition" data-en="Marlogee &amp; Gabriel" data-es="Marlogee y Gabriel">Marlogee &amp; Gabriel</a></li>
           <li><a data-nav="help" class="cursor-pointer hover:text-white transition" data-en="How We Help" data-es="Cómo Ayudamos">How We Help</a></li>
           <li><a data-nav="donate" class="cursor-pointer hover:text-white transition" data-en="Donate" data-es="Donar">Donate</a></li>
-          <li><a data-nav="request" class="cursor-pointer hover:text-white transition" data-en="Get Help" data-es="Solicitar Apoyo">Get Help</a></li>
         </ul>
       </div>
 
